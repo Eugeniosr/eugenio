@@ -39,6 +39,18 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
+          
+          script:
+            # Pull the latest Docker image from the registry
+            docker login -u nologin -p ${{ secrets.SCALEWAY_API_KEY }} ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}
+            docker pull ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/eugeniotest:latest
+            
+            # Stop the current container if running
+            docker stop eugeniotest || true
+            docker rm eugeniotest || true
+            
+            # Run the new container
+            docker run -d --name eugeniotest -p 80:80 ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/eugeniotest:latest
 
 
     # - uses: actions/checkout@v4
