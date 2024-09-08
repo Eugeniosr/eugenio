@@ -50,7 +50,7 @@ jobs:
             docker rm eugeniotest || true
            
             # Pull the latest Docker image from the registry
-            docker login -u nologin -p ${{ secrets.SCALEWAY_API_KEY }} ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}
+            #docker login -u nologin -p ${{ secrets.SCALEWAY_API_KEY }} ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}
             docker pull ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/eugeniotest:latest
 
             
