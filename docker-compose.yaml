@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  python-app:
+    image: python:3.7
+    container_name: python-app
+    volumes:
+      - ./app:/usr/src/app  # Montez le répertoire local à l'intérieur du conteneur
+    working_dir: /usr/src/app
+    command: python app.py  # Commande pour exécuter votre script Python
+    depends_on:
+      - db  # Ce service dépend de la base de données PostgreSQL
+    environment:
+      - POSTGRES_DB=eugeniodb
+      - POSTGRES_USER=eugenio
+      - POSTGRES_PASSWORD=@eugenio@
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+
+  db:
+    image: postgres:13  # Vous pouvez ajuster la version si nécessaire
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: eugeniodb
+      POSTGRES_USER: eugenio
+      POSTGRES_PASSWORD: @eugenio@
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Montez les données pour la persistance
+
+volumes:
+  postgres_data:
