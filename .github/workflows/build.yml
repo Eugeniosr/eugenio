@@ -22,17 +22,13 @@ jobs:
         registry: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}
 
     #Upload docker-compose.yml to server scaleway
-
-    - name: Generate .env file
-      run: |
-        echo "CONTAINER_REGISTRY_ENDPOINT=${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}" > .env
     - name: Upload docker-compose.yml to Scaleway
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.SCALEWAY_SERVER_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "./docker-compose.yml, .env"
+        source: "./docker-compose.yml"
         target: '/home/eugene/'
 
 
