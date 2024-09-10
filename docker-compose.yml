@@ -16,5 +16,5 @@ services:
       #dockerfile: Dockerfile  # Fichier Dockerfile
     ports:
       - "8080:8080"  # les ports du frontend
-env_file:
-  - .env
+  env_file:
+    - .env
