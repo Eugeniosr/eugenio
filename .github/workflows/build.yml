@@ -28,7 +28,7 @@ jobs:
         host: ${{ secrets.SCALEWAY_SERVER_IP }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "./docker-compose"
+        source: "./docker-compose.yml"
         target: '/home/eugene/'
 
 
