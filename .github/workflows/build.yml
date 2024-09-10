@@ -87,8 +87,8 @@ jobs:
             #docker run -d --name backendtest -p 8000:8000 ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/backendtest:latest
             
             # Stop the container frontend if running
-            docker stop frontendtest || true
-            docker rm frontendtest || true
+            #docker stop frontendtest || true
+            #docker rm frontendtest || true
            
             # Pull the latest Docker image from the registry
             #docker pull ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/frontendtest:latest
