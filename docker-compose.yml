@@ -2,17 +2,15 @@ version: '3.8'
 
 services:
   backend:
-    image: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/backend:latest
-    #build:
-     # context: ./backend  # Chemin vers le dossier contenant le Dockerfile du backend
-      #dockerfile: Dockerfile  # fichier Dockerfile
+    build:
+      context: ./backend  # Chemin vers le dossier contenant le Dockerfile du backend
+      dockerfile: Dockerfile  # fichier Dockerfile
     ports:
       - "8000:8000"  # les ports du backend
 
   frontend:
-    image: ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/frontend:latest
-    #build:
-      #context: ./frontend  # Chemin vers le dossier contenant le Dockerfile du frontend
-      #dockerfile: Dockerfile  # Fichier Dockerfile
+    build:
+      context: ./frontend  # Chemin vers le dossier contenant le Dockerfile du frontend
+      dockerfile: Dockerfile  # Fichier Dockerfile
     ports:
       - "8080:8080"  # les ports du frontend
