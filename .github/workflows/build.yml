@@ -34,13 +34,13 @@ jobs:
 
    # Build and push the backend Docker image
     - name: Build the Backend Docker image
-      run: docker build ./backend -t ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/backendtest
+      run: docker build . -t ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/backendtest
     - name: Push the backend Docker Image
       run: docker push ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/backendtest
 
   # Build and push the frontend Docker image
     - name: Build the Frontend Docker image
-      run: docker build ./frontend -t ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/frontendtest
+      run: docker build . -t ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/frontendtest
     - name: Push the Frontend Docker Image
       run: docker push ${{ secrets.CONTAINER_REGISTRY_ENDPOINT }}/frontendtest
 
